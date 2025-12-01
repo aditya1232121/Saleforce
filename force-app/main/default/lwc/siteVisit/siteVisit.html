@@ -1,36 +1,45 @@
 <template>
     <lightning-card title="Site Visit List">
 
-        <lightning-combobox 
-            label="Select the Property"
-            placeholder="Select Property"
-            options={projectOptions}
-            value={projectId}
-            onchange={handleProjectChange}>
+        <div class="filter-section">
 
-        </lightning-combobox>
-        <lightning-combobox
-            label="Select Tower"
-            placeholder="Select Tower"
-            options={towerOptions}
-            value={towerName}
-            onchange={handleTowerChange}>
-        </lightning-combobox>
+            <lightning-combobox 
+                label="Select Property"
+                placeholder="Choose Property"
+                options={projectOptions}
+                value={projectId}
+                onchange={handleProjectChange}>
+            </lightning-combobox>
 
+            <lightning-combobox
+                label="Select Tower"
+                placeholder="Choose Tower"
+                options={towerOptions}
+                value={towerName}
+                onchange={handleTowerChange}>
+            </lightning-combobox>
 
-        <lightning-button
-            label="Fetch Site Visits"
-            onclick={fetchSiteVisits}
-            class="slds-m-top_small">
-        </lightning-button>
+            <lightning-button
+                label="Fetch Site Visits"
+                variant="brand"
+                onclick={fetchSiteVisits}
+                class="fetch-btn">
+            </lightning-button>
 
-    
+        </div>
+
+        <!-- Results Section -->
         <template if:true={sites}>
-            <template for:each={sites} for:item="s">
-                <p key={s.Id}>
-                    {s.Name} — {s.Tower__c}
-                </p>
-            </template>
+            <div class="sites-list">
+
+                <template for:each={sites} for:item="s">
+                    <div key={s.Id} class="site-item">
+                        <p class="site-name">{s.Name}</p>
+                        <p class="site-info">Tower: {s.Tower__c}</p>
+                    </div>
+                </template>
+
+            </div>
         </template>
 
     </lightning-card>
