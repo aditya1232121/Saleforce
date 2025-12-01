@@ -1,36 +1,51 @@
-/* TEXT INSIDE <p> TAGS */
+/* GLOBAL TEXT */
 p {
     font-size: 15px;
     color: #2E2E2E;
-    margin: 5px 0;
+    margin: 4px 0;
+    line-height: 1.4;
 }
 
 /* CARD SPACING */
 lightning-card {
-    margin: 20px;
+    margin: 22px;
+    border-radius: 10px;
+    --slds-c-card-color-background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-/* INPUTS & COMBOBOX SPACING */
+/* FORM INPUTS */
 lightning-combobox,
 lightning-input {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
-/* BUTTON SPACING */
+/* BUTTON */
 lightning-button {
-    margin-top: 15px;
+    margin-top: 18px;
 }
 
-/* WRAPPER SPACING */
+/* WRAPPER */
 .sites-list {
-    padding: 10px;
+    padding: 14px;
+    background: #fafbfc;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
 }
 
-/* RESULT TEXT NICE LOOK */
+/* SITE ITEM – modern card look */
 .site-item {
-    background: #f4f6f9;
-    padding: 8px 10px;
-    border-radius: 6px;
-    margin-bottom: 6px;
-    border: 1px solid #dce0e5;
+    background: #ffffff;
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #e1e5ea;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* HOVER EFFECT */
+.site-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
