@@ -1,4 +1,4 @@
-/* GLOBAL TEXT */
+
 p {
     font-size: 15px;
     color: #2E2E2E;
@@ -6,7 +6,7 @@ p {
     line-height: 1.4;
 }
 
-/* CARD SPACING */
+
 lightning-card {
     margin: 22px;
     border-radius: 10px;
@@ -14,18 +14,17 @@ lightning-card {
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-/* FORM INPUTS */
+
 lightning-combobox,
 lightning-input {
     margin-bottom: 14px;
 }
 
-/* BUTTON */
 lightning-button {
     margin-top: 18px;
 }
 
-/* WRAPPER */
+
 .sites-list {
     padding: 14px;
     background: #fafbfc;
@@ -33,7 +32,7 @@ lightning-button {
     border: 1px solid #e5e7eb;
 }
 
-/* SITE ITEM – modern card look */
+
 .site-item {
     background: #ffffff;
     padding: 12px 14px;
@@ -44,7 +43,7 @@ lightning-button {
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* HOVER EFFECT */
+
 .site-item:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.12);
