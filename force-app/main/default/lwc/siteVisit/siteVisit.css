@@ -1,0 +1,36 @@
+/* TEXT INSIDE <p> TAGS */
+p {
+    font-size: 15px;
+    color: #2E2E2E;
+    margin: 5px 0;
+}
+
+/* CARD SPACING */
+lightning-card {
+    margin: 20px;
+}
+
+/* INPUTS & COMBOBOX SPACING */
+lightning-combobox,
+lightning-input {
+    margin-bottom: 12px;
+}
+
+/* BUTTON SPACING */
+lightning-button {
+    margin-top: 15px;
+}
+
+/* WRAPPER SPACING */
+.sites-list {
+    padding: 10px;
+}
+
+/* RESULT TEXT NICE LOOK */
+.site-item {
+    background: #f4f6f9;
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    border: 1px solid #dce0e5;
+}

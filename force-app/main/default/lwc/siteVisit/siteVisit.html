@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="Site Visit List">
+
+        <lightning-combobox 
+            label="Select the Property"
+            placeholder="Select Property"
+            options={projectOptions}
+            value={projectId}
+            onchange={handleProjectChange}>
+
+        </lightning-combobox>
+        <lightning-combobox
+            label="Select Tower"
+            placeholder="Select Tower"
+            options={towerOptions}
+            value={towerName}
+            onchange={handleTowerChange}>
+        </lightning-combobox>
+
+
+        <lightning-button
+            label="Fetch Site Visits"
+            onclick={fetchSiteVisits}
+            class="slds-m-top_small">
+        </lightning-button>
+
+    
+        <template if:true={sites}>
+            <template for:each={sites} for:item="s">
+                <p key={s.Id}>
+                    {s.Name} — {s.Tower__c}
+                </p>
+            </template>
+        </template>
+
+    </lightning-card>
+</template>
