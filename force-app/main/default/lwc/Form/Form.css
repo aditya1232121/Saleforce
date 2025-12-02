@@ -1,0 +1,92 @@
+/* Main Card Styling */
+.form-container {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    animation: fadeIn 0.7s ease;
+}
+
+/* Input Fields */
+lightning-input, lightning-combobox {
+    --slds-c-input-color-border: #d0d0d0;
+    --slds-c-input-color-border-focus: #6a5acd;
+    --slds-c-input-shadow-focus: 0 0 10px rgba(106, 90, 205, 0.4);
+}
+
+lightning-input input, lightning-combobox input {
+    padding: 12px !important;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+/* Button */
+lightning-button button {
+    background: linear-gradient(135deg, #6a5acd, #8a2be2);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    transition: 0.25s ease-in-out;
+    box-shadow: 0 6px 12px rgba(106, 90, 205, 0.4);
+}
+
+lightning-button button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 18px rgba(106, 90, 205, 0.6);
+}
+
+lightning-button button:active {
+    transform: scale(0.97);
+}
+
+/* Site Data Display Box */
+.site-item {
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 16px;
+    margin: 12px 0;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+    transition: all 0.3s;
+    border-left: 7px solid #6a5acd;
+}
+
+.site-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+/* Typography */
+.site-item p {
+    font-size: 15px;
+    margin: 4px 0;
+    color: #333;
+}
+
+/* Error Message */
+.erroring h1 {
+    text-align: center;
+    font-size: 18px;
+    color: #ff3b3b;
+    background: #ffe5e5;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(255,0,0,0.2);
+}
+
+/* Fancy Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

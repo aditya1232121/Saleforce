@@ -1,0 +1,81 @@
+<template>
+<lightning-card>
+
+<div class="form-container">
+
+    <lightning-input 
+        type="text"
+        label="Name"
+        placeholder="Visitor Name"
+        value={visitorName}
+        onchange={visitorNameChange}>
+    </lightning-input>
+
+    <lightning-input 
+        type="tel"
+        label="Phone Number"
+        placeholder="Phone Number"
+        value={phone}
+        onchange={phoneChange}>
+    </lightning-input>
+
+    <lightning-input
+        type="date"
+        label="Select Date"
+        value={date}
+        onchange={dateChange}>
+    </lightning-input>
+
+    <lightning-combobox
+        placeholder="Select your Project"
+        label="Select the project"
+        options={selectYourProject}
+        value={projectId}
+        onchange={projectChange}>
+    </lightning-combobox>
+
+    <lightning-combobox
+        placeholder="Select your Price Range"
+        label="Price"
+        options={selectOption}
+        value={data}
+        onchange={optionSelected}>
+    </lightning-combobox>
+
+    <lightning-combobox
+        placeholder="Select your tower"
+        label="Select the Tower"
+        options={selectYourTower}
+        value={towerName}
+        onchange={towerChange}>
+    </lightning-combobox>
+
+    <lightning-button 
+        label="Submit" 
+        variant="brand"
+        onclick={submitButtonHandler}>
+    </lightning-button>
+
+   
+    <template if:true={sites}>
+        <div class="site-data">
+            <template for:each={sites} for:item="s">
+                <div key={s.Id} class="site-item">
+                    <p><b>Name:</b> {s.Name}</p>
+                    <p><b>Price Range:</b> {s.Price_Range__c}</p>
+                    <p><b>Location:</b> {s.Location__c}</p>
+                </div>
+            </template>
+        </div>
+    </template>
+
+    <template if:false={sites}>
+        <div class="erroring">
+            <h1>There was an error while fetching the data</h1>
+        </div>
+    </template>
+
+</div>
+
+</lightning-card>
+</template>
