@@ -1,17 +1,18 @@
 trigger SiteVisitTrigger on Site_Visit__c (before insert, after insert) {
 
-    if (Trigger.isInsert && Trigger.isBefore) {
+    if (Trigger.isBefore && Trigger.isInsert) {
 
         for (Site_Visit__c sv : Trigger.new) {
             sv.Status__c = 'New';
         }
 
         Integer maxNum = 0;
+
         List<Site_Visit__c> lastRecord = [
-            SELECT Visit_Number__c 
-            FROM Site_Visit__c 
+            SELECT Visit_Number__c
+            FROM Site_Visit__c
             WHERE Visit_Number__c != null
-            ORDER BY CreatedDate DESC 
+            ORDER BY CreatedDate DESC
             LIMIT 1
         ];
 
@@ -21,22 +22,22 @@ trigger SiteVisitTrigger on Site_Visit__c (before insert, after insert) {
         }
 
         for (Site_Visit__c sv : Trigger.new) {
-            Integer nextNumber = maxNum + 1;
-            sv.Visit_Number__c = 'SV-' + String.valueOf(nextNumber).padLeft(5, '0');
             maxNum++;
+            String formatted = String.format('{0,number,00000}', new List<Object>{maxNum});
+            sv.Visit_Number__c = 'SV-' + formatted;
         }
     }
 
-    if (Trigger.isInsert && Trigger.isAfter) {
+    if (Trigger.isAfter && Trigger.isInsert) {
 
         List<Messaging.SingleEmailMessage> emails = new List<Messaging.SingleEmailMessage>();
 
         for (Site_Visit__c sv : Trigger.new) {
-            if (sv.Assigned_User__c != null) {
+            if (sv.Assigned_Agent__c != null) {
                 Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
-                email.setTargetObjectId(sv.Assigned_User__c);
+                email.setTargetObjectId(sv.Assigned_Agent__c);
                 email.setSubject('New Site Visit Assigned');
-                email.setPlainTextBody('A new site visit has been assigned to you. Visit Number: ' + sv.Visit_Number__c);
+                email.setPlainTextBody('A new site visit has been assigned. Visit Number: ' + sv.Visit_Number__c);
                 email.setSaveAsActivity(false);
                 emails.add(email);
             }

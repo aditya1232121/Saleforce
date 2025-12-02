@@ -41,7 +41,7 @@ public static List<Site_Visit__c> getSiteVisits(String projectId , String TowerN
 if (String.isNotBlank(projectId) && String.isNotBlank(TowerName))
 {
     return [
-        select Id  , Project__c , Tower__c  , Price_Range__c
+        select Id  , Project__c , Tower__c  ,Project__r.Price_Range__c
         from Site_Visit__c 
         where Project__c =: projectId AND Tower__r.Name = :TowerName
     ] ;
