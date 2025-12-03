@@ -68,16 +68,7 @@ lightning-button button:active {
     color: #333;
 }
 
-/* Error Message */
-.erroring h1 {
-    text-align: center;
-    font-size: 18px;
-    color: #ff3b3b;
-    background: #ffe5e5;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(255,0,0,0.2);
-}
+
 
 /* Fancy Animation */
 @keyframes fadeIn {

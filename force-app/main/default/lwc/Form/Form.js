@@ -1,23 +1,42 @@
 import { LightningElement, track } from "lwc";
-import getTowers from "@salesforce/apex/CustomController.getTowers";
-import getproject from "@salesforce/apex/CustomController.getproject";
-import getSiteVisits from "@salesforce/apex/CustomController.getSiteVisits";
+import getTowers from "@salesforce/apex/SiteController.getTowers";
+import getProject from "@salesforce/apex/SiteController.getProject";
+import getSites from "@salesforce/apex/SiteController.getSites";
 
 export default class Form extends LightningElement {
-
     @track selectYourProject = [];
     @track selectOption = [];
     @track selectYourTower = [];
-    @track sites;
+    @track sites = [];
+    @track error = null;
 
-    projectId;
-    data;
-    towerName;
-    visitorName;
-    phones; 
+    projectId = '';
+    towerId = '';
+    priceValue = '';
+    visitorName = '';
+    phone = '';
+    date = '';
 
     connectedCallback() {
-        this.controller();
+        this.loadProjects();
+    }
+
+    async loadProjects() {
+        try {
+            const result = await getProject();
+            this.selectYourProject = result.map(p => ({
+                label: p.Name,
+                value: p.Id
+            }));
+            const prices = result
+                .map(p => p.Price_Range__c)
+                .filter(v => v)
+                .filter((v, i, a) => a.indexOf(v) === i);
+            this.selectOption = prices.map(v => ({ label: v, value: v }));
+            this.error = null;
+        } catch {
+            this.error = 'Unable to load projects';
+        }
     }
 
     projectChange(e) {
@@ -25,44 +44,42 @@ export default class Form extends LightningElement {
         this.loadTowers();
     }
 
+    async loadTowers() {
+        try {
+            const result = await getTowers({ projectId: this.projectId });
+            this.selectYourTower = result.map(t => ({
+                label: t.Name,
+                value: t.Id
+            }));
+            this.error = null;
+        } catch {
+            this.selectYourTower = [];
+            this.error = 'Unable to load towers';
+        }
+    }
+
     towerChange(e) {
-        this.towerName = e.detail.value;
+        this.towerId = e.detail.value;
     }
 
     optionSelected(e) {
-        this.data = e.detail.value;
+        this.priceValue = e.detail.value;
     }
 
-    async controller() {
-        const result = await getproject();
-        this.selectYourProject = result.map(p => ({
-            label: p.Name,
-            value: p.Id
-        }));
-
-        this.selectOption = result.map(p => ({
-            label: p.Price_Range__c,
-            value: p.Price_Range__c
-        }));
-    }
-
-    async loadTowers() {
-        const towerresult = await getTowers({ projectId: this.projectId });
-        this.selectYourTower = towerresult.map(p => ({
-            label: p.Name,
-            value: p.Id
-        }));
-    }
+    visitorNameChange(e) { this.visitorName = e.target.value; }
+    phoneChange(e) { this.phone = e.target.value; }
+    dateChange(e) { this.date = e.target.value; }
 
     async submitButtonHandler() {
         try {
-            const result = await getSiteVisits({
+            const result = await getSites({
                 projectId: this.projectId,
-                towerName: this.towerName
+                towerId: this.towerId
             });
             this.sites = result;
-        } catch (error) {
-            console.error("Error fetching site visits:", error);
+            this.error = null;
+        } catch {
+            this.error = 'Unable to fetch site visits';
         }
     }
 }
