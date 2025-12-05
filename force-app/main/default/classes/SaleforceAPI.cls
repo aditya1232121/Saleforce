@@ -57,9 +57,11 @@ global static string Updateing ()
 {
     try {
         RestRequest req = RestContext.request ;
+        string url = req.requestURI.substringAfter('/saleforceApi/') ;
         string jsonbody = req.requestBody.toString() ; 
     
         Account acc = (Account) JSON.deserialize(jsonbody, Account.class);
+        acc.id = url ;
         update acc ;
 
         return 'Successfully updated Account with Id : ' + acc.Id ;
@@ -72,17 +74,19 @@ global static string Updateing ()
 
 
 
-@HpptPatch 
+@HttpPatch 
 global static string Upt ()
 {
     try {
         RestRequest req = RestContext.request ; 
+        string url = req.requestURI.substringAfter('/saleforceApi/') ;
         string jsonbody = req.requestBody.toString() ;
-        Account acc = (Account) JSON.deserialize(jsonString, Account.class) ;
+        Account accing = (Account) JSON.deserialize(jsonbody, Account.class) ;
+        accing.Id = url ;
 
-        upate acc ;
+        update accing ;
 
-        return 'Successfully updated Account with Id : ' + acc.Id ;
+        return 'Successfully updated Account with Id : ' + accing   .Id ;
     }
     catch (Exception e)
     {
@@ -90,6 +94,28 @@ global static string Upt ()
 }
 
 
+}
+
+@HttpDelete  
+global static string deleteAccount ()
+{
+    try {
+        RestRequest req = RestContext.request ;
+        string url = req.requestURI.substringAfter('/saleforceApi/') ;
+       // string jsonbody = req.requestBody.toString() ;
+
+       // Account acc = (Account) JSON.deserialize(jsonbody, Account.class) ; 
+        
+       Account acc = [select Id from Account where Id =:url Limit 1 ] ;
+
+       // delete mein limit daalna bohot jyada jaruri hai kyuki agar multiple record mil gaye toh error aayega
+        delete acc ;
+        return 'Successfully deleted Account with Id : ' + acc.Id ;
+    }
+    catch (Exception e)
+    {
+        return e.getMessage() ;
+}
 }
 
 }
