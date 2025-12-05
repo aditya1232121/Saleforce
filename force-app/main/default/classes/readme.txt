@@ -12,4 +12,13 @@ oauth scope
 
 Full access (full)
 Manage user data via APIs (api)
-Perform requests at any time (refresh_token
+Perform requests at any time (refresh_token, offline_access)
+
+
+// access modifier 
+
+
+
+global --- > accessible everywhere including outside the application
+public ---> accessible everywhere within the application/org
+private ---> accessible only within the defined class
