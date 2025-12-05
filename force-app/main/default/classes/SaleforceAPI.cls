@@ -53,7 +53,7 @@ global with sharing class SaleforceAPI {
 
 
 @HttpPut 
-global static string Updateing()
+global static string Updateing ()
 {
     try {
         RestRequest req = RestContext.request ;
@@ -72,9 +72,29 @@ global static string Updateing()
 
 
 
+@HpptPatch 
+global static string Upt ()
+{
+    try {
+        RestRequest req = RestContext.request ; 
+        string jsonbody = req.requestBody.toString() ;
+        Account acc = (Account) JSON.deserialize(jsonString, Account.class) ;
+
+        upate acc ;
+
+        return 'Successfully updated Account with Id : ' + acc.Id ;
+    }
+    catch (Exception e)
+    {
+        return e.getMessage() ;
+}
+
 
 }
 
+}
 // put matlba pura record update karna hota hai agar field miss hua toh null ho jayega
 // patch matlba partial update karna hota hai jo field milegi wahi update hogi baaki jaisi ki hai waisi hi rahegi
-
+// delete 
+// iske baad param ka use karke id lunga 
+// connect with lwc 
