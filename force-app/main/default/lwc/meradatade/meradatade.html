@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="GitHub Users" class="slds-m-around_medium">
+        
+        <lightning-button 
+            label="Load Users" 
+            onclick={clickhogyahai}
+            class="slds-m-around_small">
+        </lightning-button>
+
+        <template if:true={users}>
+            <template for:each={users} for:item="u">
+                <p key={u.id}>{u.login}</p>
+            </template>
+        </template>
+
+    </lightning-card>
+</template>
