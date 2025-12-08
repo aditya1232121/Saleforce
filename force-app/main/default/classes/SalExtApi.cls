@@ -38,22 +38,5 @@ System.debug('Exception' + e.getMessage());
 
 }
 
-global static void Postans() {}
-
 
 }
-
-
-
-
-// Get all the bulk data  ---> store raw data into custom object ---> Batch apex ---> process data as per the requirement
-
-
-// soql == 50k rows
-// Dml == 10k rows
-
-
-
-
-// Serialize ---> convert object to JSON string
-// Deserialize ---> convert JSON string to object

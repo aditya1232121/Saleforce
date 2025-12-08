@@ -123,4 +123,4 @@ global static string deleteAccount ()
 // patch matlba partial update karna hota hai jo field milegi wahi update hogi baaki jaisi ki hai waisi hi rahegi
 // delete 
 // iske baad param ka use karke id lunga 
-// connect with lwc 
+// connect with lwc
