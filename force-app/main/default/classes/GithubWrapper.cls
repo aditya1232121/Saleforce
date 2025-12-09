@@ -7,3 +7,5 @@ public string url;
 
 
 }
+
+// wrapper class is a custom class that multiple data / object together so that u can handle it 
