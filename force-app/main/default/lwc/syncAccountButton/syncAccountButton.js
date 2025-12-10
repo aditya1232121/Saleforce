@@ -17,6 +17,8 @@ export default class SyncAccountButton extends LightningElement {
         });
     }
 
+    
+
     showToast(title, message, variant) {
         this.dispatchEvent(
             new ShowToastEvent({
@@ -27,3 +29,6 @@ export default class SyncAccountButton extends LightningElement {
         );
     }
 }
+
+
+
