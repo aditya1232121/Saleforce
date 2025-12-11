@@ -20,6 +20,29 @@ global with sharing class AccountAPI {
         
         return acc.Id;
     }
+
+    @HttpPut 
+    global static string UpdatePut ()
+    {
+        try {
+            RestRequest req = RestContext.request ; 
+            string jsonbody = req.requestBody.string() ; 
+            string url = req.requestURI.substring('/accountAPI/*') ; 
+            Account acc = (Account) JSON.deserialize(jsonbody, Account.class) ; 
+            acc.Id = url ; 
+
+            update acc ;
+
+            return 'Successfully updated Account with Id : ' + acc.Id 
+
+        }
+        catch (Exception e)
+        {
+            return 'There was a error :' + e.getMessage() ;
+        }
+    }
+
+
 }
 
 

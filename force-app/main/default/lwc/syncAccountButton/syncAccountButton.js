@@ -26,9 +26,6 @@ export default class SyncAccountButton extends LightningElement {
                 message,
                 variant
             })
-        );
+        );                                                                  
     }
 }
-
-
-
