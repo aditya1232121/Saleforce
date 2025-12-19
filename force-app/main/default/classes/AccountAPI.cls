@@ -33,7 +33,7 @@ global with sharing class AccountAPI {
 
             update acc ;
 
-            return 'Successfully updated Account with Id : ' + acc.Id 
+            return 'Successfully updated Account with Id : ' + acc.Id  ;
 
         }
         catch (Exception e)

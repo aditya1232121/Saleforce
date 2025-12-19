@@ -1,0 +1,52 @@
+<template>
+    <div>
+       <lightning-layout horizontal-align="center">
+        <lightning-layout-item padding="around-small" size="3">
+
+            <lightning-combobox
+            name="Type"
+            label="Type"
+            value={selectedType}
+            placeholder="Select Type"
+            options={options}
+            onchange={handleChange} ></lightning-combobox>
+
+    <p>Selected value is: {value}</p>
+        
+        </lightning-layout-item>
+       </lightning-layout>
+
+       <lightning-layout horizontal-align="center " size = '7'>
+        <lightning-layout-item padding="around-small">
+        
+
+<lightning-input
+name="Enter Search"   
+label="Enter Search Item"
+type="search"
+is-loading={loading}
+onchange={handleChange}
+placeholder="Search for the movie"
+></lightning-input>
+
+
+        </lightning-layout-item>
+       </lightning-layout>
+
+       <lightning-layout horizontal-align="center" size="2                                                           ">
+        <lightning-layout-item padding="around-small">
+        
+        </lightning-layout-item>
+       </lightning-layout>
+    </div>
+
+    <div>
+
+    </div>
+    
+</template>
+
+
+<!-- lighning layout page ko divide karne ke liye use hota hai 
+  -->
+<!-- Name is used by backend or js label is seen by user -->
