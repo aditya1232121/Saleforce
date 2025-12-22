@@ -1,0 +1,16 @@
+
+
+
+
+
+
+/////////////////////////////////////////// API Kaise Likhna hai /////////////////////////////////////////////////////////
+
+for post
+wraapper class karne ka 
+fir kya karna ka json ka data deseriliaze karne ka 
+
+jo obect mein post karna hai toh woh initilaize karne ka 
+
+map karo 
+
